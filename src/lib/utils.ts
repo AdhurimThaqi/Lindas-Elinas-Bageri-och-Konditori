@@ -1,4 +1,5 @@
 import { business } from "@/content/site";
+import { BASE_PATH } from "@/lib/base-path";
 
 /**
  * Tiny classnames helper — joins truthy class strings.
@@ -15,9 +16,8 @@ export function cn(...classes: Array<string | false | null | undefined>): string
  * project GitHub Pages sub-path. No-op when no basePath is configured (dev).
  */
 export function withBasePath(path: string): string {
-  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  if (!base || !path.startsWith("/")) return path;
-  return `${base}${path}`;
+  if (!BASE_PATH || !path.startsWith("/")) return path;
+  return `${BASE_PATH}${path}`;
 }
 
 /** tel: href built from the business phone number. */
