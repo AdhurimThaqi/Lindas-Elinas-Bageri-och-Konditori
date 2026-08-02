@@ -8,6 +8,18 @@ export function cn(...classes: Array<string | false | null | undefined>): string
   return classes.filter(Boolean).join(" ");
 }
 
+/**
+ * Prefix a root-relative public asset path with the configured basePath.
+ * Needed because next/image does NOT add basePath to the `src` of unoptimized
+ * images (our static-export setup), so raw /images/… paths would 404 on a
+ * project GitHub Pages sub-path. No-op when no basePath is configured (dev).
+ */
+export function withBasePath(path: string): string {
+  const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  if (!base || !path.startsWith("/")) return path;
+  return `${base}${path}`;
+}
+
 /** tel: href built from the business phone number. */
 export function telHref(): string {
   return `tel:${business.phone.e164}`;

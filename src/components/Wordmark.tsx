@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import { BerryMark } from "./decor";
 
 /**
@@ -38,7 +38,7 @@ export function Wordmark({
       >
         {logoOk ? (
           <Image
-            src="/images/logo.jpg"
+            src={withBasePath("/images/logo.jpg")}
             alt=""
             width={markSize}
             height={markSize}

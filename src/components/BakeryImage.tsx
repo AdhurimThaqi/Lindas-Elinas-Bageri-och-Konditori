@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { cn } from "@/lib/utils";
+import { cn, withBasePath } from "@/lib/utils";
 import { WheatMark } from "./decor";
 
 interface BakeryImageProps {
@@ -38,7 +38,7 @@ export function BakeryImage({
     <div className={cn("relative overflow-hidden", className)}>
       {!failed ? (
         <Image
-          src={src}
+          src={withBasePath(src)}
           alt={alt}
           fill
           sizes={sizes}
