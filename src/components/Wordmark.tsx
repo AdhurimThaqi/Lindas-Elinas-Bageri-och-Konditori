@@ -7,15 +7,16 @@ import { cn, withBasePath } from "@/lib/utils";
 import { BerryMark } from "./decor";
 
 /**
- * Brand wordmark: the real logo badge (public/images/logo.jpg) in a soft white
- * chip, paired with a typographic lockup for legibility and SEO. If the logo
- * file is missing it falls back to a small berry mark, so the header/footer
- * never break. Replacing the logo requires no code change.
+ * Brand wordmark: the real logo (public/images/logo.jpg) paired with a
+ * typographic lockup for legibility and SEO. The logo is black artwork on a
+ * white JPEG background; `mix-blend-multiply` drops that white against the light
+ * header/footer so it reads as transparent. If the logo file is missing it
+ * falls back to a small berry mark, so the header/footer never break.
  */
 export function Wordmark({
   className,
   compact = false,
-  markSize = 44,
+  markSize = 56,
 }: {
   className?: string;
   compact?: boolean;
@@ -33,7 +34,7 @@ export function Wordmark({
       aria-label="Lindas & Elinas Bageri och Konditori — till startsidan"
     >
       <span
-        className="inline-flex shrink-0 items-center justify-center overflow-hidden rounded-full bg-white ring-1 ring-line transition-transform duration-300 group-hover:scale-105"
+        className="inline-flex shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105"
         style={{ width: markSize, height: markSize }}
       >
         {logoOk ? (
@@ -42,12 +43,12 @@ export function Wordmark({
             alt=""
             width={markSize}
             height={markSize}
-            className="h-full w-full object-contain p-0.5"
+            className="h-full w-full object-contain mix-blend-multiply"
             onError={() => setLogoOk(false)}
             priority
           />
         ) : (
-          <BerryMark className="h-5 w-5 text-[color:var(--color-raspberry)]" />
+          <BerryMark className="h-6 w-6 text-[color:var(--color-raspberry)]" />
         )}
       </span>
       <span className="flex flex-col leading-none">
