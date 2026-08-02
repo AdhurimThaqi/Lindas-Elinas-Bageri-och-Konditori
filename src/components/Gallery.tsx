@@ -2,18 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { galleryImages, type GalleryImage } from "@/content/gallery";
-import { cn } from "@/lib/utils";
+import { galleryImages } from "@/content/gallery";
 import { BakeryImage } from "./BakeryImage";
 
-const spanClasses: Record<GalleryImage["span"], string> = {
-  tall: "sm:row-span-2 aspect-[3/4]",
-  wide: "sm:col-span-2 aspect-[16/9]",
-  regular: "aspect-square",
-};
-
 /**
- * Responsive masonry-style gallery with an accessible lightbox: keyboard
+ * Responsive uniform-grid gallery with an accessible lightbox: keyboard
  * navigation (arrows + Escape), focus trapping, swipe support on mobile and
  * descriptive alt text. No autoplay carousel.
  */
@@ -79,9 +72,9 @@ export function Gallery() {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
         {galleryImages.map((img, i) => (
-          <li key={img.src} className={cn(spanClasses[img.span])}>
+          <li key={img.src} className="aspect-square">
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
