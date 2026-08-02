@@ -10,8 +10,6 @@ import { ReviewsSection } from "@/components/ReviewsSection";
 import { Sustainability } from "@/components/Sustainability";
 import { LocationPanel } from "@/components/LocationPanel";
 import { SectionHeading } from "@/components/SectionHeading";
-import { BakeryImage } from "@/components/BakeryImage";
-import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -45,23 +43,12 @@ export default function HomePage() {
 
       <section className="bg-paper">
         <div className="container-page py-20 md:py-28">
-          <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-            <SectionHeading
-              eyebrow="Hitta hit"
-              title="Välkommen till Edsbergs torg"
-              intro="Mitt på torget i Edsberg, Sollentuna. Kika in för fika, frukost, lunch eller för att prata tårta – du känner igen oss på skylten vid nummer 14."
-            />
-            <Reveal y={24}>
-              <BakeryImage
-                src="/images/storefront.jpg"
-                alt="Lindas & Elinas bageri och konditori på Edsbergs torg 14."
-                sizes="(min-width: 1024px) 46vw, 90vw"
-                placeholderLabel="Vår butik på Edsbergs torg 14"
-                className="aspect-[4/3] w-full rounded-lg shadow-lift"
-              />
-            </Reveal>
-          </div>
-          <div className="mt-14">
+          <SectionHeading
+            eyebrow="Hitta hit"
+            title="Välkommen till Edsbergs torg"
+            intro="Mitt på torget i Edsberg, Sollentuna. Kika in för fika, frukost, lunch eller för att prata tårta – du känner igen oss på skylten vid nummer 14."
+          />
+          <div className="mt-12">
             <LocationPanel />
           </div>
         </div>

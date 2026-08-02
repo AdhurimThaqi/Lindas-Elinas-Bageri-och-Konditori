@@ -1,7 +1,8 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
 import { business } from "@/content/site";
-import { telHref } from "@/lib/utils";
+import { telHref, withBasePath } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
 import { CurveStroke } from "./decor";
@@ -72,23 +73,25 @@ export function Hero() {
           <Reveal y={24}>
             <div className="relative">
               <BakeryImage
-                src="/images/hero-cakes.webp"
-                alt="Dukat bord med tårtor och bakverk från Lindas & Elinas."
+                src="/images/storefront.jpg"
+                alt="Lindas & Elinas entré på Edsbergs torg 14 i Sollentuna."
                 priority
                 sizes="(min-width: 1024px) 42vw, 90vw"
-                placeholderLabel="Tårtor & bakverk"
+                placeholderLabel="Vår butik på Edsbergs torg 14"
                 className="mask-arch aspect-[4/5] w-full shadow-lift"
               />
 
-              {/* Smaller detail image */}
-              <div className="absolute -bottom-8 -left-6 w-40 sm:w-48 lg:-left-10 lg:w-56">
-                <BakeryImage
-                  src="/images/cake-detail.webp"
-                  alt="Närbild på en dekorerad tårta."
-                  sizes="220px"
-                  placeholderLabel="Detalj"
-                  className="aspect-square w-full rounded-lg border-4 border-cream shadow-lift"
-                />
+              {/* Logo stamp overlay */}
+              <div className="absolute -bottom-7 -left-5 h-28 w-28 sm:h-32 sm:w-32 lg:-left-9 lg:h-36 lg:w-36">
+                <span className="flex h-full w-full items-center justify-center rounded-full border-4 border-cream bg-white p-3 shadow-lift">
+                  <Image
+                    src={withBasePath("/images/logo.jpg")}
+                    alt="Lindas & Elinas Bageri och Konditori logotyp"
+                    width={144}
+                    height={144}
+                    className="h-full w-full rounded-full object-contain"
+                  />
+                </span>
               </div>
 
               {/* Sedan 2018 badge */}
