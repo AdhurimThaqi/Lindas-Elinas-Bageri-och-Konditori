@@ -53,7 +53,7 @@ export function CakeOrderSection() {
 
         <Reveal y={24}>
           <BakeryImage
-            src="/images/cake-detail.webp"
+            src="/images/cake-detail.svg"
             alt="Närbild på en tårta med dekorativ gräddspritsning."
             sizes="(min-width: 1024px) 46vw, 90vw"
             placeholderLabel="Festtårta"

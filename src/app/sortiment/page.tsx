@@ -35,7 +35,7 @@ const sections: AssortmentSection[] = [
     slug: "tartor",
     label: "Tårtor",
     title: "Tårtor för livets firanden",
-    image: "/images/cake-detail.webp",
+    image: "/images/cake-detail.svg",
     imageAlt: "Dekorerad tårta från Lindas & Elinas.",
     paragraphs: [
       "Ska något firas? Hos oss kan du fråga om tårtor till födelsedagar, studenten, dop, jubileum och andra tillställningar – stora som små.",
@@ -48,7 +48,7 @@ const sections: AssortmentSection[] = [
     slug: "smorgastartor",
     label: "Smörgåstårtor",
     title: "Smörgåstårtor för sällskap",
-    image: "/images/sandwich-cake.webp",
+    image: "/images/sandwich-cake.svg",
     imageAlt: "Dekorerad smörgåstårta.",
     paragraphs: [
       "Matiga smörgåstårtor passar perfekt till familjefirandet, jobbet, kalaset eller den lite större fikan när många ska samlas.",
@@ -59,7 +59,7 @@ const sections: AssortmentSection[] = [
     slug: "bakverk-kaffebrod",
     label: "Bakverk & kaffebröd",
     title: "Bakverk & kaffebröd",
-    image: "/images/pastries.webp",
+    image: "/images/pastries.svg",
     imageAlt: "Ett urval bakverk och kaffebröd i montern.",
     paragraphs: [
       "I montern hittar du nygräddade bakverk, bullar och kaffebröd – perfekt till kaffet, fikat eller att ta med hem.",
@@ -72,7 +72,7 @@ const sections: AssortmentSection[] = [
     slug: "matbrod",
     label: "Matbröd",
     title: "Nygräddat matbröd",
-    image: "/images/bread.webp",
+    image: "/images/bread.svg",
     imageAlt: "Nybakat matbröd på ett bageribord.",
     paragraphs: [
       "Vi bakar bröd på plats för frukostbordet, mackan och middagen. Färskt bröd hör vardagen till – och gör den lite godare.",
@@ -83,7 +83,7 @@ const sections: AssortmentSection[] = [
     slug: "frukost-lunch",
     label: "Frukost, smörgåsar & lunch",
     title: "Frukost, smörgåsar & lunch",
-    image: "/images/breakfast-lunch.webp",
+    image: "/images/breakfast-lunch.svg",
     imageAlt: "Frukost och lunch serverat i bageriet.",
     paragraphs: [
       "Börja dagen med frukost, ta en smörgås på språng eller stanna till för lunch mitt på Edsbergs torg.",

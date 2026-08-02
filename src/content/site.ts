@@ -216,7 +216,7 @@ export const categories: ProductCategory[] = [
     short: "Tårtor för livets firanden",
     description:
       "Från klassiska gräddtårtor till festtårtor för födelsedag, student, dop och jubileum. Berätta vad du firar så hjälper vi dig att hitta rätt.",
-    image: "/images/cake-detail.webp",
+    image: "/images/cake-detail.svg",
     imageAlt: "Närbild på en dekorerad tårta från Lindas & Elinas.",
     feature: true,
   },
@@ -226,7 +226,7 @@ export const categories: ProductCategory[] = [
     short: "Till kaffet och fikat",
     description:
       "Nygräddade bakverk, bullar och kaffebröd i montern varje dag – med säsongens godaste när det är dags.",
-    image: "/images/pastries.webp",
+    image: "/images/pastries.svg",
     imageAlt: "Ett urval av bakverk och kaffebröd i bageriets monter.",
   },
   {
@@ -235,7 +235,7 @@ export const categories: ProductCategory[] = [
     short: "Nygräddat varje dag",
     description:
       "Bröd bakat på plats för frukostbordet, mackan och middagen. Utbudet varierar med dagen och säsongen.",
-    image: "/images/bread.webp",
+    image: "/images/bread.svg",
     imageAlt: "Nybakat matbröd på ett bageribord.",
   },
   {
@@ -244,7 +244,7 @@ export const categories: ProductCategory[] = [
     short: "För sällskap som samlas",
     description:
       "Matiga smörgåstårtor till kalaset, jobbet och familjefirandet. Beställ i god tid så gör vi i ordning.",
-    image: "/images/sandwich-cake.webp",
+    image: "/images/sandwich-cake.svg",
     imageAlt: "En dekorerad smörgåstårta.",
   },
   {
@@ -253,7 +253,7 @@ export const categories: ProductCategory[] = [
     short: "Morgon, macka och dagens",
     description:
       "Frukost på språng, smörgåsar och lunch mitt på Edsbergs torg. Aktuellt utbud kan variera – kom in eller hör av dig.",
-    image: "/images/breakfast-lunch.webp",
+    image: "/images/breakfast-lunch.svg",
     imageAlt: "Frukost och lunch serverat i bageriet.",
   },
 ];
@@ -282,7 +282,7 @@ export const seasonalCampaign: SeasonalCampaign = {
     "Vi följer årstiderna i bageriet. Just nu bakar vi det som är som allra godast för stunden – kom in och se dagens monter.",
   dateRange: "",
   badge: "Säsong",
-  image: "/images/pastries.webp",
+  image: "/images/pastries.svg",
   imageAlt: "Säsongens bakverk i bageriets monter.",
   cta: { label: "Se vårt utbud", href: "/sortiment" },
 };

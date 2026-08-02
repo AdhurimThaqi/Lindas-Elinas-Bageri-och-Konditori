@@ -11,7 +11,7 @@ export function StorySection() {
         <Reveal y={24} className="order-2 lg:order-1">
           <figure className="relative">
             <BakeryImage
-              src="/images/interior.webp"
+              src="/images/interior.svg"
               alt="Interiör från bageriet på Edsbergs torg med välfyllda montrar."
               sizes="(min-width: 1024px) 46vw, 90vw"
               placeholderLabel="I bageriet"

@@ -31,7 +31,7 @@ export function SeasonalFeature() {
           "Även mellan säsongerna bakar vi tårtor för det ni firar. Berätta vad ni planerar så hjälper vi dig att hitta rätt.",
         dateRange: "",
         badge: "På beställning",
-        image: "/images/cake-detail.webp",
+        image: "/images/cake-detail.svg",
         imageAlt: "Närbild på en dekorerad beställningstårta.",
         cta: { label: "Skicka en tårtförfrågan", href: "/bestall" },
       };

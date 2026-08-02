@@ -4,6 +4,13 @@ Lägg äkta, egna bilder från bageriet i `public/images/`. Använd **exakt** sa
 filnamn som nedan – då dyker de upp automatiskt, utan att någon kod behöver
 ändras. Tills en bild finns visas en snygg platshållare som håller layouten hel.
 
+> **Demobilder:** just nu visas tillfälliga exempelbilder (`.svg`, märkta
+> "EXEMPELBILD") så att sidan kan visas upp innan riktiga foton finns. De
+> genereras av `scripts/gen-demo-images.mjs`. När du har riktiga foton: lägg in
+> dem och be utvecklaren peka om sökvägen från `.svg` till ditt filnamn (t.ex.
+> `cake-detail.webp`) i `src/content/site.ts` / `src/content/gallery.ts`.
+> `storefront.jpg` och `logo.jpg` är redan riktiga bilder.
+
 > **Ladda inte ner upphovsrättsskyddade bilder och hämta inte bilder från
 > Facebook/Instagram.** Använd egna foton (gärna en mobil med bra ljus, eller en
 > fotograf).

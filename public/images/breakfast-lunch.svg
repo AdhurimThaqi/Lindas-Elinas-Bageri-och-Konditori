@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="1000" height="750" role="img" aria-label="Frukost & lunch">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FFF8EF"/><stop offset="1" stop-color="#F4E9DA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1000" height="750" fill="url(#g)"/>
+  <g transform="translate(350, 225) scale(3)" fill="none" stroke="#1D1A18" stroke-opacity="0.42" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    
+    <path d="M28 44 h34 v14 a14 14 0 0 1-14 14 h-6 a14 14 0 0 1-14-14 z"/>
+    <path d="M62 48 h6 a7 7 0 0 1 0 14 h-6"/>
+    <path d="M36 34 q4-5 0-10 M46 34 q4-5 0-10"/>
+  </g>
+  <text x="500" y="680" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#1D1A18" fill-opacity="0.7">Frukost & lunch</text>
+  <text x="500" y="716" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" letter-spacing="3" fill="#873D56" fill-opacity="0.75">EXEMPELBILD</text>
+</svg>
