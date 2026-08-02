@@ -1,0 +1,31 @@
+{
+  "name": "lindas-elinas-bageri-och-konditori",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Website for Lindas & Elinas Bageri och Konditori, Edsbergs torg, Sollentuna.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^16.2.12",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "motion": "^12.43.0",
+    "lucide-react": "^1.28.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "@types/node": "^26.1.2",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tailwindcss": "^4.3.3",
+    "@tailwindcss/postcss": "^4.3.3",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "^16.2.12"
+  }
+}

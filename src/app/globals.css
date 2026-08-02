@@ -1,0 +1,293 @@
+@import "tailwindcss";
+
+/* =======================================================================
+   Design tokens — "Scandinavian patisserie meets warm neighborhood bakery"
+   ======================================================================= */
+@theme {
+  --color-cream: #fff8ef;
+  --color-paper: #f4e9da;
+  --color-charcoal: #1d1a18;
+  --color-raspberry: #d85a78;
+  --color-berry: #873d56;
+  --color-gold: #c48a46;
+  --color-sage: #98a18d;
+  --color-white: #ffffff;
+
+  /* Semantic aliases */
+  --color-ink: #1d1a18;
+  --color-ink-soft: #4a423d;
+  --color-ink-muted: #6f645c;
+  --color-line: #e7dccb;
+
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --radius-card: 0.5rem;
+
+  --shadow-soft: 0 1px 2px rgba(29, 26, 24, 0.04),
+    0 12px 30px -18px rgba(29, 26, 24, 0.22);
+  --shadow-lift: 0 2px 4px rgba(29, 26, 24, 0.05),
+    0 24px 48px -24px rgba(29, 26, 24, 0.28);
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =======================================================================
+   Base
+   ======================================================================= */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: " kern", "liga";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-ink);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-raspberry) 24%, transparent);
+    color: var(--color-berry);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-berry);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+/* =======================================================================
+   Reusable utilities & decorative details
+   ======================================================================= */
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 80rem; /* 1280px */
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-page {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Fine paper-grain texture layered very lightly over the page. */
+  .paper-grain::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+
+  /* Hand-drawn underline stroke placed under an inline span. */
+  .stroke-underline {
+    position: relative;
+    display: inline-block;
+  }
+  .stroke-underline::after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    right: -2%;
+    bottom: -0.18em;
+    height: 0.42em;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 18' preserveAspectRatio='none'%3E%3Cpath d='M2 12 C 40 4, 80 4, 120 9 S 180 14, 198 6' fill='none' stroke='%23D85A78' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-berry);
+  }
+
+  /* Curved image mask used sparingly (hero, story). */
+  .mask-arch {
+    border-radius: 12rem 12rem 0.75rem 0.75rem;
+  }
+  .mask-blob {
+    border-radius: 62% 38% 46% 54% / 55% 48% 52% 45%;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1;
+    padding: 0.85rem 1.4rem;
+    border-radius: 999px;
+    transition:
+      transform 0.25s var(--ease-out-soft),
+      background-color 0.25s var(--ease-out-soft),
+      color 0.25s var(--ease-out-soft),
+      border-color 0.25s var(--ease-out-soft),
+      box-shadow 0.25s var(--ease-out-soft);
+    white-space: nowrap;
+  }
+  .btn:active {
+    transform: translateY(1px);
+  }
+  .btn-primary {
+    background-color: var(--color-raspberry);
+    color: var(--color-white);
+    box-shadow: 0 10px 24px -14px rgba(216, 90, 120, 0.9);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-berry);
+  }
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-ink);
+    border: 1px solid var(--color-ink);
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-ink);
+    color: var(--color-cream);
+  }
+  .btn-ghost {
+    background-color: var(--color-white);
+    color: var(--color-ink);
+    border: 1px solid var(--color-line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-ink);
+  }
+
+  .link-underline {
+    position: relative;
+    font-weight: 600;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1.5px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.3s var(--ease-out-soft);
+  }
+  .link-underline:hover {
+    background-size: 100% 1.5px;
+  }
+
+  .form-input {
+    width: 100%;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: 0.5rem;
+    padding: 0.7rem 0.85rem;
+    font-size: 1rem;
+    color: var(--color-ink);
+    transition:
+      border-color 0.2s var(--ease-out-soft),
+      box-shadow 0.2s var(--ease-out-soft);
+  }
+  .form-input::placeholder {
+    color: var(--color-ink-muted);
+    opacity: 0.7;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: var(--color-berry);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-berry) 18%, transparent);
+  }
+  .form-input-error {
+    border-color: var(--color-raspberry);
+  }
+
+  .surface-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* Skeleton shimmer used by image placeholders. */
+  .img-placeholder {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        120% 120% at 30% 20%,
+        color-mix(in srgb, var(--color-paper) 70%, white),
+        var(--color-paper)
+      );
+  }
+  .img-placeholder::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      110deg,
+      transparent 30%,
+      color-mix(in srgb, white 55%, transparent) 50%,
+      transparent 70%
+    );
+    transform: translateX(-100%);
+    animation: shimmer 2.4s var(--ease-out-soft) infinite;
+  }
+  @keyframes shimmer {
+    to {
+      transform: translateX(100%);
+    }
+  }
+}
+
+/* Utility: hide content visually but keep it for screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
