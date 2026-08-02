@@ -1,13 +1,13 @@
 "use client";
 
 import { useRef, useState, type FormEvent } from "react";
-import { Loader2, Phone, CheckCircle2, AlertCircle, Mail } from "lucide-react";
+import { Phone, CheckCircle2, AlertCircle, Mail } from "lucide-react";
 import { orderSchema, type OrderFieldErrors } from "@/lib/order-schema";
 import { orderFormOptions, orderLeadTimeNote, business } from "@/content/site";
 import { telHref, mailtoHref } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 
-type Status = "idle" | "submitting" | "success" | "fallback" | "error";
+type Status = "idle" | "sent";
 
 const initialValues = {
   orderType: "",
@@ -62,9 +62,8 @@ export function OrderForm() {
     }
   };
 
-  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (status === "submitting") return; // guard against duplicate submits
 
     const payload = { ...values, consent: values.consent ? "on" : "" };
     const result = orderSchema.safeParse(payload);
@@ -78,66 +77,51 @@ export function OrderForm() {
         }
       }
       setErrors(fieldErrors);
-      setStatus("idle");
       requestAnimationFrame(() => summaryRef.current?.focus());
       return;
     }
 
-    setStatus("submitting");
     setErrors({});
 
-    try {
-      const res = await fetch("/api/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const json = (await res.json()) as {
-        ok: boolean;
-        delivered?: boolean;
-        fallback?: boolean;
-        fieldErrors?: OrderFieldErrors;
-      };
-
-      if (!res.ok || !json.ok) {
-        if (json.fieldErrors) {
-          setErrors(json.fieldErrors);
-          setStatus("idle");
-          requestAnimationFrame(() => summaryRef.current?.focus());
-          return;
-        }
-        setStatus("error");
-        return;
-      }
-
-      if (json.delivered) {
-        setStatus("success");
-      } else {
-        // No backend configured — open a prefilled email as a reliable fallback.
-        setStatus("fallback");
-        const href = mailtoHref(
-          `Tårtförfrågan – ${values.name}`,
-          buildMailtoBody(values),
-        );
-        window.location.href = href;
-      }
-    } catch {
-      setStatus("error");
+    // Honeypot: silently accept bots without opening a mail client.
+    if (values.company) {
+      setStatus("sent");
+      return;
     }
+
+    // Static-host friendly: open a prefilled email so the enquiry reaches the
+    // bakery reliably without a backend. Never claims a confirmed order.
+    const href = mailtoHref(
+      `Tårtförfrågan – ${values.name}`,
+      buildMailtoBody(values),
+    );
+    window.location.href = href;
+    setStatus("sent");
   }
 
-  if (status === "success") {
+  if (status === "sent") {
     return (
       <div className="surface-card p-8 text-center" role="status">
         <CheckCircle2 className="mx-auto h-12 w-12 text-[color:var(--color-sage)]" aria-hidden="true" />
         <h2 className="mt-4 font-serif text-2xl text-charcoal">
-          Tack! Din förfrågan är skickad.
+          Nästan klart – skicka mejlet
         </h2>
         <p className="mx-auto mt-3 max-w-md text-[color:var(--color-ink-soft)]">
-          Beställningen är inte bekräftad förrän du har fått svar från oss. Vi
-          återkommer så snart vi kan.
+          Vi har öppnat ett förifyllt e-postmeddelande med din förfrågan. Skicka
+          det så återkommer vi. Beställningen är inte bekräftad förrän du har
+          fått svar från oss.
         </p>
-        <a href={telHref()} className="btn btn-ghost mt-6">
+        <p className="mx-auto mt-3 max-w-md text-sm text-[color:var(--color-ink-muted)]">
+          Öppnades inget mejl?{" "}
+          <a
+            href={mailtoHref(`Tårtförfrågan – ${values.name}`, buildMailtoBody(values))}
+            className="link-underline font-semibold text-charcoal"
+          >
+            Klicka här för att mejla
+          </a>{" "}
+          eller ring oss.
+        </p>
+        <a href={telHref()} className="btn btn-primary mt-6">
           <Phone className="h-4 w-4" aria-hidden="true" />
           Ring {business.phone.display}
         </a>
@@ -170,42 +154,6 @@ export function OrderForm() {
               </li>
             ))}
           </ul>
-        </div>
-      ) : null}
-
-      {status === "fallback" ? (
-        <div className="rounded-lg border border-[color:var(--color-gold)]/40 bg-[color:var(--color-gold)]/10 p-4 text-sm text-[color:var(--color-ink-soft)]" role="status">
-          <p className="font-semibold text-charcoal">
-            Skicka förfrågan via e-post eller ring oss så hjälper vi dig.
-          </p>
-          <p className="mt-1">
-            Vi öppnade ett förifyllt e-postmeddelande åt dig. Öppnades det inte?{" "}
-            <a
-              href={mailtoHref(`Tårtförfrågan – ${values.name}`, buildMailtoBody(values))}
-              className="link-underline font-semibold text-charcoal"
-            >
-              Klicka här för att mejla
-            </a>{" "}
-            eller ring {business.phone.display}.
-          </p>
-        </div>
-      ) : null}
-
-      {status === "error" ? (
-        <div className="rounded-lg border border-[color:var(--color-raspberry)]/40 bg-[color:var(--color-raspberry)]/10 p-4 text-sm" role="alert">
-          <p className="font-semibold text-[color:var(--color-berry)]">
-            Något gick fel när förfrågan skulle skickas.
-          </p>
-          <p className="mt-1 text-[color:var(--color-ink-soft)]">
-            Försök igen, eller{" "}
-            <a
-              href={mailtoHref(`Tårtförfrågan – ${values.name}`, buildMailtoBody(values))}
-              className="link-underline font-semibold text-charcoal"
-            >
-              mejla oss
-            </a>{" "}
-            eller ring {business.phone.display}.
-          </p>
         </div>
       ) : null}
 
@@ -419,19 +367,8 @@ export function OrderForm() {
       </div>
 
       <div className="flex flex-wrap items-center gap-3">
-        <button
-          type="submit"
-          disabled={status === "submitting"}
-          className="btn btn-primary disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          {status === "submitting" ? (
-            <>
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-              Skickar…
-            </>
-          ) : (
-            "Skicka tårtförfrågan"
-          )}
+        <button type="submit" className="btn btn-primary">
+          Skicka tårtförfrågan
         </button>
         <a href={telHref()} className="btn btn-ghost">
           <Phone className="h-4 w-4" aria-hidden="true" />

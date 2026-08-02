@@ -30,18 +30,34 @@ npm run dev        # http://localhost:3000
 
 ## Deployment
 
-The site is a standard Next.js app and deploys cleanly to **Vercel** (recommended),
-Netlify, or any Node host.
+The site is configured as a **static export** (`output: "export"` in
+`next.config.ts`), so it deploys to any static host.
 
-1. Push the repository to your Git provider.
-2. Import the project in Vercel.
-3. Set the environment variables you need (see below). At minimum set
-   `NEXT_PUBLIC_SITE_URL` to the production domain.
-4. Deploy. The build command is `npm run build`.
+### GitHub Pages (current setup)
 
-Everything works with **zero configuration** — the order form falls back to a
-prefilled email, analytics stays off, and images show elegant placeholders until
-you add the real photos.
+A workflow at `.github/workflows/nextjs.yml` builds and deploys automatically on
+every push to `main`. `actions/configure-pages` injects the correct
+`basePath`/`assetPrefix` for the project subpath. Just push to `main` and enable
+Pages (Settings → Pages → Source: GitHub Actions).
+
+### Other static hosts (Netlify, Cloudflare Pages, S3 …)
+
+Run `npm run build` and deploy the generated `out/` directory.
+
+### Node host (Vercel) — optional
+
+If you'd rather run a Node server (for server-side form delivery), remove
+`output: "export"` from `next.config.ts` and re-add a route handler/server
+action for the form (see "Form delivery").
+
+Everything works with **zero configuration** — the order form opens a prefilled
+email, analytics stays off, and any missing photos show elegant placeholders.
+
+> **Note on the cake form:** on a static host (GitHub Pages) there is no server,
+> so the enquiry form submits by opening a prefilled email to the bakery. It
+> never claims a confirmed order. To collect submissions server-side instead,
+> deploy to a Node host and add a route handler using the shared schema in
+> `src/lib/order-schema.ts`.
 
 ---
 

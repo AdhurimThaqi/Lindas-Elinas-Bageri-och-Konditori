@@ -20,7 +20,8 @@ filnamn som nedan – då dyker de upp automatiskt, utan att någon kod behöver
 | --- | --- | --- | --- | --- |
 | `public/images/hero-cakes.webp` | Dukat bord med tårtor/bakverk (startsidans huvudbild) | Stående 4:5 | 1200 × 1500 | Tårtor och bakverk |
 | `public/images/cake-detail.webp` | Närbild på en dekorerad tårta | Kvadratisk 1:1 | 1200 × 1200 | Dekorerad tårta |
-| `public/images/storefront.webp` | Fasad/entré på Edsbergs torg | Stående 4:5 | 1200 × 1500 | Butiken på torget |
+| `public/images/storefront.jpg` | Fasad/entré på Edsbergs torg (redan tillagd) | Liggande 4:3 | 1200 × 900 | Butiken på torget |
+| `public/images/logo.jpg` | Logotypen (rund badge, redan tillagd) | Kvadratisk 1:1 | 512 × 512 | Lindas & Elinas logotyp |
 | `public/images/interior.webp` | Interiör med montrar | Liggande 5:4 | 1400 × 1120 | Bageriets interiör |
 | `public/images/bread.webp` | Nybakat matbröd | Liggande 4:3 | 1400 × 1050 | Matbröd |
 | `public/images/pastries.webp` | Bakverk & kaffebröd i monter | Liggande 4:3 | 1400 × 1050 | Bakverk & kaffebröd |

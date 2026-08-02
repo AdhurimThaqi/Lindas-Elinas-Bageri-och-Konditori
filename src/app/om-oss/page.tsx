@@ -52,7 +52,7 @@ export default function OmOssPage() {
       <section className="container-page grid items-center gap-10 py-16 md:py-20 lg:grid-cols-2 lg:gap-16">
         <Reveal y={24}>
           <BakeryImage
-            src="/images/storefront.webp"
+            src="/images/storefront.jpg"
             alt="Lindas & Elinas bageri på Edsbergs torg."
             sizes="(min-width: 1024px) 46vw, 90vw"
             placeholderLabel="Butiken på torget"
