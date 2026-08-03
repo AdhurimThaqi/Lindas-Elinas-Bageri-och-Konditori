@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { MobileActionBar } from "@/components/MobileActionBar";
 import { Analytics } from "@/components/Analytics";
 import { ScrollProgress, ScrollTopButton } from "@/components/motion";
+import { Preloader } from "@/components/Preloader";
 import { LocalBusinessJsonLd } from "@/components/JsonLd";
 import { getSiteUrl, seo } from "@/content/site";
 import { withBasePath } from "@/lib/utils";
@@ -83,6 +84,7 @@ export default function RootLayout({
         >
           Hoppa till innehåll
         </a>
+        <Preloader />
         <ScrollProgress />
         <ScrollTopButton />
         <div className="relative z-10 flex min-h-dvh flex-col">
