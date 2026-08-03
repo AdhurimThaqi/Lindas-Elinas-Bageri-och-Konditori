@@ -7,66 +7,55 @@ import { Tilt } from "./motion";
 
 interface CategoryCardProps {
   category: ProductCategory;
-  /** Aspect ratio class for the image area (varies the layout rhythm). */
+  /** Aspect ratio class for the image area. */
   aspect?: string;
   /** Grid placement / span classes supplied by the parent. */
   className?: string;
-  /** Curved top mask for the occasional editorial accent. */
-  arch?: boolean;
   priority?: boolean;
   sizes?: string;
 }
 
 /**
- * Editorial category card: photo + title + short line + link. Deliberately not
- * an e-commerce product tile — no prices, varied aspect ratios via props.
+ * Editorial category card: photo + title + short line + a pink circular
+ * action button — matching the reference design. No prices.
  */
 export function CategoryCard({
   category,
   aspect = "aspect-[4/3]",
   className,
-  arch = false,
   priority = false,
-  sizes = "(min-width: 1024px) 30vw, 90vw",
+  sizes = "(min-width: 1024px) 20vw, (min-width: 640px) 45vw, 90vw",
 }: CategoryCardProps) {
   return (
-    <Tilt className={cn("group", className)} glare max={7}>
+    <Tilt className={cn("group", className)} glare max={6}>
       <Link
         href={`/sortiment#${category.slug}`}
-        className="relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft transition-shadow duration-300 group-hover:shadow-lift"
+        className="relative flex h-full flex-col overflow-hidden rounded-xl border border-line bg-white shadow-soft transition-shadow duration-300 group-hover:shadow-lift"
       >
-      <div className={cn("relative w-full overflow-hidden", aspect)}>
-        <BakeryImage
-          src={category.image}
-          alt={category.imageAlt}
-          sizes={sizes}
-          priority={priority}
-          placeholderLabel={category.title}
-          className={cn(
-            "h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]",
-            arch && "mask-arch",
-          )}
-        />
-        <span className="absolute left-3 top-3 rounded-full bg-cream/90 px-3 py-1 text-xs font-semibold text-[color:var(--color-berry)] backdrop-blur-sm">
-          {category.short}
-        </span>
-      </div>
-
-      <div className="flex flex-1 flex-col p-5">
-        <h3 className="flex items-center justify-between gap-2 font-serif text-2xl text-charcoal">
-          {category.title}
-          <ArrowUpRight
-            className="h-5 w-5 shrink-0 text-[color:var(--color-berry)] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            aria-hidden="true"
+        <div className={cn("relative w-full overflow-hidden", aspect)}>
+          <BakeryImage
+            src={category.image}
+            alt={category.imageAlt}
+            sizes={sizes}
+            priority={priority}
+            placeholderLabel={category.title}
+            className="h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
           />
-        </h3>
-        <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
-          {category.description}
-        </p>
-        <span className="mt-4 text-sm font-semibold text-charcoal link-underline self-start">
-          Se sortiment
-        </span>
-      </div>
+        </div>
+
+        <div className="flex flex-1 flex-col p-5">
+          <h3 className="font-serif text-xl text-charcoal sm:text-2xl">
+            {category.title}
+          </h3>
+          <p className="mt-1.5 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+            {category.short}
+          </p>
+          <span className="mt-4 flex justify-end">
+            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-raspberry)] text-white shadow-[0_8px_18px_-10px_rgba(216,90,120,0.9)] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-12">
+              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+            </span>
+          </span>
+        </div>
       </Link>
     </Tilt>
   );

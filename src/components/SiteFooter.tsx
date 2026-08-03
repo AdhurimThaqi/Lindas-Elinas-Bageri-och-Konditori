@@ -48,11 +48,6 @@ export function SiteFooter() {
         <nav aria-label="Sidfotsmeny">
           <h2 className="font-serif text-lg">Utforska</h2>
           <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <Link href="/" className="link-underline text-[color:var(--color-ink-soft)]">
-                Hem
-              </Link>
-            </li>
             {nav.map((item) => (
               <li key={item.href}>
                 <Link

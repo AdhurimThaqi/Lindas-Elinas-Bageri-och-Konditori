@@ -8,7 +8,6 @@ import { OpeningStatus } from "./OpeningStatus";
 import { BerryMark } from "./decor";
 import { Reveal } from "./Reveal";
 import { Floating, Parallax, Magnetic, DrawStroke } from "./motion";
-import { SealBadge } from "./SealBadge";
 
 export function Hero() {
   return (
@@ -30,10 +29,7 @@ export function Hero() {
           <Reveal delay={0.06} variant="blur">
             <h1 className="mt-4 text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-[4.1rem]">
               Nybakat på riktigt,{" "}
-              <span className="stroke-underline text-gradient-animated">
-                mitt i Edsberg
-              </span>
-              .
+              <span className="stroke-underline">mitt i Edsberg</span>.
             </h1>
           </Reveal>
           <Reveal delay={0.12}>
@@ -113,8 +109,15 @@ export function Hero() {
                   </span>
                 </div>
 
-                {/* Sedan 2018 seal/stamp badge (gentle float), on the top-right corner */}
-                <SealBadge className="absolute -top-7 right-3 z-10 w-24 [animation:float-soft_6s_ease-in-out_infinite_0.5s] sm:right-4 sm:w-28 lg:w-32" />
+                {/* Sedan 2018 gold badge (matches the reference design) */}
+                <div className="absolute -top-5 right-4 z-10 flex aspect-square w-20 -rotate-6 flex-col items-center justify-center rounded-full bg-[color:var(--color-gold)] text-cream shadow-lift ring-4 ring-cream [animation:float-soft_6s_ease-in-out_infinite_0.5s] sm:w-24">
+                  <span className="font-serif text-base italic leading-none">
+                    Sedan
+                  </span>
+                  <span className="font-serif text-2xl font-semibold leading-none">
+                    2018
+                  </span>
+                </div>
               </div>
             </Parallax>
           </Reveal>

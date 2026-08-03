@@ -172,8 +172,9 @@ export const announcement = {
 /* ---------------------------------------------------------------------- */
 
 export const nav: NavItem[] = [
+  { href: "/", label: "Hem" },
   { href: "/sortiment", label: "Sortiment" },
-  { href: "/bestall", label: "Beställ tårta" },
+  { href: "/bestall", label: "Beställ" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },
 ];
@@ -213,7 +214,7 @@ export const categories: ProductCategory[] = [
   {
     slug: "tartor",
     title: "Tårtor",
-    short: "Tårtor för livets firanden",
+    short: "För alla firanden – stora som små",
     description:
       "Från klassiska gräddtårtor till festtårtor för födelsedag, student, dop och jubileum. Berätta vad du firar så hjälper vi dig att hitta rätt.",
     image: "/images/cake-detail.svg",
@@ -223,7 +224,7 @@ export const categories: ProductCategory[] = [
   {
     slug: "bakverk-kaffebrod",
     title: "Bakverk & kaffebröd",
-    short: "Till kaffet och fikat",
+    short: "Nygräddat varje dag – alltid något gott",
     description:
       "Nygräddade bakverk, bullar och kaffebröd i montern varje dag – med säsongens godaste när det är dags.",
     image: "/images/pastries.svg",
@@ -232,7 +233,7 @@ export const categories: ProductCategory[] = [
   {
     slug: "matbrod",
     title: "Matbröd",
-    short: "Nygräddat varje dag",
+    short: "Bröd bakat på plats med omsorg",
     description:
       "Bröd bakat på plats för frukostbordet, mackan och middagen. Utbudet varierar med dagen och säsongen.",
     image: "/images/bread.svg",
@@ -241,7 +242,7 @@ export const categories: ProductCategory[] = [
   {
     slug: "smorgastartor",
     title: "Smörgåstårtor",
-    short: "För sällskap som samlas",
+    short: "Perfekt för kalas, fest och företaget",
     description:
       "Matiga smörgåstårtor till kalaset, jobbet och familjefirandet. Beställ i god tid så gör vi i ordning.",
     image: "/images/sandwich-cake.svg",
@@ -250,7 +251,7 @@ export const categories: ProductCategory[] = [
   {
     slug: "frukost-lunch",
     title: "Frukost & lunch",
-    short: "Morgon, macka och dagens",
+    short: "Smörgåsar, sallader och dagens lunch",
     description:
       "Frukost på språng, smörgåsar och lunch mitt på Edsbergs torg. Aktuellt utbud kan variera – kom in eller hör av dig.",
     image: "/images/breakfast-lunch.svg",
