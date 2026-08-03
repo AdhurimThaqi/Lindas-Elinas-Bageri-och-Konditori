@@ -5,22 +5,20 @@ import { business } from "@/content/site";
 import { telHref, withBasePath } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
-import { CurveStroke, BerryMark, WheatMark } from "./decor";
+import { BerryMark } from "./decor";
 import { Reveal } from "./Reveal";
-import { Floating, Parallax, Magnetic } from "./motion";
+import { Floating, Parallax, Magnetic, DrawStroke } from "./motion";
+import { SealBadge } from "./SealBadge";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
       {/* Floating decorative bits */}
-      <Floating className="left-[5%] top-[22%] hidden lg:block" duration={7}>
-        <BerryMark className="h-8 w-8 text-[color:var(--color-raspberry)] opacity-40" />
+      <Floating className="left-[5%] top-[24%] hidden lg:block" duration={7}>
+        <BerryMark className="h-7 w-7 text-[color:var(--color-raspberry)] opacity-30" />
       </Floating>
-      <Floating className="left-[46%] top-[8%] hidden md:block" duration={9} delay={1.2}>
-        <WheatMark className="h-9 w-9 text-[color:var(--color-gold)] opacity-40" />
-      </Floating>
-      <Floating className="bottom-[14%] right-[6%] hidden lg:block" duration={8} delay={0.6}>
-        <BerryMark className="h-6 w-6 text-[color:var(--color-berry)] opacity-40" />
+      <Floating className="bottom-[16%] left-[42%] hidden lg:block" duration={8} delay={0.6}>
+        <BerryMark className="h-5 w-5 text-[color:var(--color-berry)] opacity-30" />
       </Floating>
 
       <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20">
@@ -83,7 +81,13 @@ export function Hero() {
 
         {/* Layered photo composition */}
         <div className="relative">
-          <CurveStroke className="pointer-events-none absolute -left-8 -top-10 z-0 hidden h-28 w-72 text-[color:var(--color-gold)] opacity-60 lg:block" />
+          {/* Draw-on accent stroke arcing over the top of the image */}
+          <DrawStroke
+            d="M4 46C70 8 150 6 214 30c40 15 78 8 100-20"
+            viewBox="0 0 320 60"
+            strokeWidth={2.4}
+            className="pointer-events-none absolute -top-6 left-6 z-0 hidden h-12 w-[78%] text-[color:var(--color-gold)] opacity-70 lg:block"
+          />
           <Reveal variant="scale">
             <Parallax offset={26}>
               <div className="relative">
@@ -109,15 +113,8 @@ export function Hero() {
                   </span>
                 </div>
 
-                {/* Sedan 2018 badge (gentle float, offset phase) */}
-                <div className="absolute -right-3 top-5 rotate-3 rounded-full bg-cream px-4 py-3 text-center shadow-lift ring-1 ring-line [animation:float-soft_6s_ease-in-out_infinite_0.5s] lg:-right-6">
-                  <span className="block font-serif text-lg leading-none text-[color:var(--color-berry)]">
-                    Sedan
-                  </span>
-                  <span className="block font-serif text-2xl font-semibold leading-none text-charcoal">
-                    2018
-                  </span>
-                </div>
+                {/* Sedan 2018 seal/stamp badge (gentle float), on the top-right corner */}
+                <SealBadge className="absolute -top-7 right-3 z-10 w-24 [animation:float-soft_6s_ease-in-out_infinite_0.5s] sm:right-4 sm:w-28 lg:w-32" />
               </div>
             </Parallax>
           </Reveal>

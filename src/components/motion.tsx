@@ -226,6 +226,43 @@ export function Parallax({
   );
 }
 
+/* ---- Draw-on SVG stroke ------------------------------------------------ */
+export function DrawStroke({
+  d,
+  viewBox,
+  className,
+  strokeWidth = 2,
+  delay = 0.3,
+}: {
+  d: string;
+  viewBox: string;
+  className?: string;
+  strokeWidth?: number;
+  delay?: number;
+}) {
+  const reduce = useReducedMotion();
+  return (
+    <svg
+      viewBox={viewBox}
+      fill="none"
+      preserveAspectRatio="none"
+      className={className}
+      aria-hidden="true"
+    >
+      <motion.path
+        d={d}
+        stroke="currentColor"
+        strokeWidth={strokeWidth}
+        strokeLinecap="round"
+        initial={{ pathLength: reduce ? 1 : 0, opacity: reduce ? 1 : 0 }}
+        whileInView={{ pathLength: 1, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1.3, ease: [0.22, 1, 0.36, 1], delay }}
+      />
+    </svg>
+  );
+}
+
 /* ---- Floating decorative bits ----------------------------------------- */
 export function Floating({
   children,
