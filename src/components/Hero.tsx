@@ -5,22 +5,34 @@ import { business } from "@/content/site";
 import { telHref, withBasePath } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
-import { CurveStroke } from "./decor";
+import { CurveStroke, BerryMark, WheatMark } from "./decor";
 import { Reveal } from "./Reveal";
+import { Floating, Parallax, Magnetic } from "./motion";
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden">
+      {/* Floating decorative bits */}
+      <Floating className="left-[5%] top-[22%] hidden lg:block" duration={7}>
+        <BerryMark className="h-8 w-8 text-[color:var(--color-raspberry)] opacity-40" />
+      </Floating>
+      <Floating className="left-[46%] top-[8%] hidden md:block" duration={9} delay={1.2}>
+        <WheatMark className="h-9 w-9 text-[color:var(--color-gold)] opacity-40" />
+      </Floating>
+      <Floating className="bottom-[14%] right-[6%] hidden lg:block" duration={8} delay={0.6}>
+        <BerryMark className="h-6 w-6 text-[color:var(--color-berry)] opacity-40" />
+      </Floating>
+
       <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20">
         {/* Copy */}
         <div className="relative z-10 max-w-xl">
-          <Reveal>
+          <Reveal variant="blur">
             <p className="eyebrow">{business.tagline}</p>
           </Reveal>
-          <Reveal delay={0.06}>
+          <Reveal delay={0.06} variant="blur">
             <h1 className="mt-4 text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-[4.1rem]">
               Nybakat på riktigt,{" "}
-              <span className="stroke-underline text-[color:var(--color-berry)]">
+              <span className="stroke-underline text-gradient-animated">
                 mitt i Edsberg
               </span>
               .
@@ -35,12 +47,16 @@ export function Hero() {
 
           <Reveal delay={0.18}>
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Link href="/bestall" className="btn btn-primary">
-                Beställ tårta
-              </Link>
-              <Link href="/sortiment" className="btn btn-secondary">
-                Se vårt utbud
-              </Link>
+              <Magnetic strength={0.25}>
+                <Link href="/bestall" className="btn btn-primary">
+                  Beställ tårta
+                </Link>
+              </Magnetic>
+              <Magnetic strength={0.25}>
+                <Link href="/sortiment" className="btn btn-secondary">
+                  Se vårt utbud
+                </Link>
+              </Magnetic>
             </div>
           </Reveal>
 
@@ -49,10 +65,10 @@ export function Hero() {
               <OpeningStatus />
               <Link
                 href="/kontakt"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
+                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
               >
                 Öppettider &amp; hitta hit
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
               </Link>
               <a
                 href={telHref()}
@@ -67,43 +83,43 @@ export function Hero() {
 
         {/* Layered photo composition */}
         <div className="relative">
-          <CurveStroke
-            className="pointer-events-none absolute -left-8 -top-10 z-0 hidden h-28 w-72 text-[color:var(--color-gold)] opacity-60 lg:block"
-          />
-          <Reveal y={24}>
-            <div className="relative">
-              <BakeryImage
-                src="/images/storefront.jpg"
-                alt="Lindas & Elinas entré på Edsbergs torg 14 i Sollentuna."
-                priority
-                sizes="(min-width: 1024px) 42vw, 90vw"
-                placeholderLabel="Vår butik på Edsbergs torg 14"
-                className="mask-arch aspect-[4/5] w-full shadow-lift"
-              />
+          <CurveStroke className="pointer-events-none absolute -left-8 -top-10 z-0 hidden h-28 w-72 text-[color:var(--color-gold)] opacity-60 lg:block" />
+          <Reveal variant="scale">
+            <Parallax offset={26}>
+              <div className="relative">
+                <BakeryImage
+                  src="/images/storefront.jpg"
+                  alt="Lindas & Elinas entré på Edsbergs torg 14 i Sollentuna."
+                  priority
+                  sizes="(min-width: 1024px) 42vw, 90vw"
+                  placeholderLabel="Vår butik på Edsbergs torg 14"
+                  className="mask-arch aspect-[4/5] w-full shadow-lift"
+                />
 
-              {/* Logo stamp overlay */}
-              <div className="absolute -bottom-7 -left-5 h-28 w-28 sm:h-32 sm:w-32 lg:-left-9 lg:h-36 lg:w-36">
-                <span className="flex h-full w-full items-center justify-center rounded-full border-4 border-cream bg-white p-3 shadow-lift">
-                  <Image
-                    src={withBasePath("/images/logo-transparent.svg")}
-                    alt="Lindas & Elinas Bageri och Konditori logotyp"
-                    width={144}
-                    height={144}
-                    className="h-full w-full rounded-full object-contain"
-                  />
-                </span>
-              </div>
+                {/* Logo stamp overlay (gentle float) */}
+                <div className="absolute -bottom-7 -left-5 h-28 w-28 [animation:float-soft_5s_ease-in-out_infinite] sm:h-32 sm:w-32 lg:-left-9 lg:h-36 lg:w-36">
+                  <span className="flex h-full w-full items-center justify-center rounded-full border-4 border-cream bg-white p-3 shadow-lift">
+                    <Image
+                      src={withBasePath("/images/logo-transparent.svg")}
+                      alt="Lindas & Elinas Bageri och Konditori logotyp"
+                      width={144}
+                      height={144}
+                      className="h-full w-full rounded-full object-contain"
+                    />
+                  </span>
+                </div>
 
-              {/* Sedan 2018 badge */}
-              <div className="absolute -right-3 top-5 rotate-3 rounded-full bg-cream px-4 py-3 text-center shadow-lift ring-1 ring-line lg:-right-6">
-                <span className="block font-serif text-lg leading-none text-[color:var(--color-berry)]">
-                  Sedan
-                </span>
-                <span className="block font-serif text-2xl font-semibold leading-none text-charcoal">
-                  2018
-                </span>
+                {/* Sedan 2018 badge (gentle float, offset phase) */}
+                <div className="absolute -right-3 top-5 rotate-3 rounded-full bg-cream px-4 py-3 text-center shadow-lift ring-1 ring-line [animation:float-soft_6s_ease-in-out_infinite_0.5s] lg:-right-6">
+                  <span className="block font-serif text-lg leading-none text-[color:var(--color-berry)]">
+                    Sedan
+                  </span>
+                  <span className="block font-serif text-2xl font-semibold leading-none text-charcoal">
+                    2018
+                  </span>
+                </div>
               </div>
-            </div>
+            </Parallax>
           </Reveal>
         </div>
       </div>

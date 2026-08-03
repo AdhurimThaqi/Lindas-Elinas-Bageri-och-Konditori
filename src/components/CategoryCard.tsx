@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import type { ProductCategory } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
+import { Tilt } from "./motion";
 
 interface CategoryCardProps {
   category: ProductCategory;
@@ -29,13 +30,11 @@ export function CategoryCard({
   sizes = "(min-width: 1024px) 30vw, 90vw",
 }: CategoryCardProps) {
   return (
-    <Link
-      href={`/sortiment#${category.slug}`}
-      className={cn(
-        "group relative flex flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft transition-shadow duration-300 hover:shadow-lift",
-        className,
-      )}
-    >
+    <Tilt className={cn("group", className)} glare max={7}>
+      <Link
+        href={`/sortiment#${category.slug}`}
+        className="relative flex h-full flex-col overflow-hidden rounded-lg border border-line bg-white shadow-soft transition-shadow duration-300 group-hover:shadow-lift"
+      >
       <div className={cn("relative w-full overflow-hidden", aspect)}>
         <BakeryImage
           src={category.image}
@@ -68,6 +67,7 @@ export function CategoryCard({
           Se sortiment
         </span>
       </div>
-    </Link>
+      </Link>
+    </Tilt>
   );
 }

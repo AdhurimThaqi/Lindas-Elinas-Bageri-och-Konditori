@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/content/gallery";
 import { BakeryImage } from "./BakeryImage";
+import { Tilt } from "./motion";
 
 /**
  * Responsive uniform-grid gallery with an accessible lightbox: keyboard
@@ -75,10 +76,11 @@ export function Gallery() {
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-4">
         {galleryImages.map((img, i) => (
           <li key={img.src} className="aspect-square">
+            <Tilt className="group h-full" glare max={8}>
             <button
               type="button"
               onClick={() => setOpenIndex(i)}
-              className="group relative block h-full w-full overflow-hidden rounded-lg border border-line bg-white text-left shadow-soft transition-shadow hover:shadow-lift"
+              className="relative block h-full w-full overflow-hidden rounded-lg border border-line bg-white text-left shadow-soft transition-shadow group-hover:shadow-lift"
               aria-label={`Öppna bild: ${img.alt}`}
             >
               <BakeryImage
@@ -92,6 +94,7 @@ export function Gallery() {
                 {img.category}
               </span>
             </button>
+            </Tilt>
           </li>
         ))}
       </ul>
