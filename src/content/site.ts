@@ -293,17 +293,39 @@ export const seasonalCampaign: SeasonalCampaign = {
 /* ---------------------------------------------------------------------- */
 
 /**
- * Only add entries here that are REAL and verified. If this array is empty,
- * the site shows a tasteful social-proof summary without fabricated quotes.
+ * Real, verified reviews (from Google & Tripadvisor, translated to Swedish).
+ * Keep only genuine reviews here and update them as they change.
  */
-export const reviews: Review[] = [];
+export const reviews: Review[] = [
+  {
+    quote:
+      "Fantastiskt utbud av kaffebröd, tårtor och allt ser hemlagat ut. Bra priser på allt och påtår ingår på det perfekta kaffet! Trevlig personal också.",
+    author: "Ylva F",
+    source: "Tripadvisor",
+  },
+  {
+    quote:
+      "Rekommenderar verkligen det här stället — massor av efterrätter och frukost, och maten håller riktigt hög kvalitet.",
+    author: "Anna M",
+    source: "Google",
+  },
+  {
+    quote:
+      "Stort och fint utbud av svensk fika. Väldigt gott bryggkaffe och mycket prisvärt.",
+    author: "Samuli R",
+    source: "Google",
+  },
+];
 
-/** Editable, because these change over time. Update from your listings. */
+/** The note shown under the reviews. */
+export const reviewsNote =
+  "Alla omdömen är riktiga (Google & Tripadvisor, översatta till svenska).";
+
+/** Editable ratings — update from your listings as they change. */
 export const socialProof = {
-  /** Set to null while unverified to hide numeric claims. */
-  ratingText: null as string | null, // e.g. "4,5 av 5"
-  reviewCountText: null as string | null, // e.g. "Över 200 omdömen"
-  /** Recurring themes customers mention — safe, non-fabricated highlights. */
+  google: { rating: "4,3", meta: "på Google · 241 omdömen" },
+  tripadvisor: { rating: "5,0", meta: "på Tripadvisor · #1 bageri i Sollentuna" },
+  /** Recurring themes customers mention. */
   themes: [
     "Stort utbud",
     "Trevligt bemötande",

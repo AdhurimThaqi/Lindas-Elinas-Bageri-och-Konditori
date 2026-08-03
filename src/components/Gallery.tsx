@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/content/gallery";
 import { BakeryImage } from "./BakeryImage";
@@ -99,9 +100,10 @@ export function Gallery() {
         ))}
       </ul>
 
-      {active && openIndex !== null ? (
+      {active && openIndex !== null
+        ? createPortal(
         <div
-          className="fixed inset-0 z-[80] flex items-center justify-center bg-charcoal/85 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-charcoal/85 p-4 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-label={`Bild ${openIndex + 1} av ${galleryImages.length}: ${active.alt}`}
@@ -163,8 +165,10 @@ export function Gallery() {
           >
             <ChevronRight className="h-6 w-6" aria-hidden="true" />
           </button>
-        </div>
-      ) : null}
+        </div>,
+            document.body,
+          )
+        : null}
     </>
   );
 }
