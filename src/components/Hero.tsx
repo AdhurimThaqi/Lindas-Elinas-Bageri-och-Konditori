@@ -141,11 +141,12 @@ export function Hero() {
             <div style={{ filter: "drop-shadow(0 16px 26px rgba(29,26,24,0.32))" }}>
               <div className="bg-white p-1.5 pb-2.5" style={tornStyle}>
                 <BakeryImage
-                  src="/images/pastries.svg"
-                  alt="Nygräddade bullar från Lindas & Elinas."
+                  src="/images/logo.jpg"
+                  alt="Lindas & Elinas logotyp."
                   sizes="200px"
-                  placeholderLabel="Nybakat"
-                  className="aspect-[5/4] w-full"
+                  fit="contain"
+                  placeholderLabel="Lindas & Elinas"
+                  className="aspect-[5/4] w-full bg-white"
                 />
               </div>
             </div>

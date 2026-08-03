@@ -15,6 +15,8 @@ interface BakeryImageProps {
   /** Small label shown on the placeholder while the real photo is missing. */
   placeholderLabel?: string;
   quality?: number;
+  /** How the image fills its box. Defaults to cover (crops to fill). */
+  fit?: "cover" | "contain";
 }
 
 /**
@@ -31,6 +33,7 @@ export function BakeryImage({
   className,
   placeholderLabel,
   quality = 82,
+  fit = "cover",
 }: BakeryImageProps) {
   const [failed, setFailed] = useState(false);
 
@@ -44,7 +47,7 @@ export function BakeryImage({
           sizes={sizes}
           quality={quality}
           priority={priority}
-          className="object-cover"
+          className={fit === "contain" ? "object-contain" : "object-cover"}
           onError={() => setFailed(true)}
         />
       ) : (
