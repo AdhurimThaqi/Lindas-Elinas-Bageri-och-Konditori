@@ -153,6 +153,11 @@
     pointer-events: none;
   }
 
+  /* Handwritten accent font, used sparingly for stickers/captions. */
+  .font-hand {
+    font-family: var(--font-hand), "Segoe Script", cursive;
+  }
+
   .eyebrow {
     font-family: var(--font-sans);
     font-size: 0.8125rem;

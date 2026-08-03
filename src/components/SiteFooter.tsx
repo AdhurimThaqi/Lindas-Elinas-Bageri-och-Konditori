@@ -103,8 +103,8 @@ export function SiteFooter() {
               </div>
             ))}
           </dl>
-          <p className="mt-5 font-serif text-xl text-[color:var(--color-berry)]">
-            Hjärtligt välkommen in.
+          <p className="font-hand mt-4 text-3xl text-[color:var(--color-berry)]">
+            Hjärtligt välkommen in!
           </p>
         </div>
       </div>

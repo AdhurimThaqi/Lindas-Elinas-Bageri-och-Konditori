@@ -1,13 +1,27 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowRight, Phone } from "lucide-react";
 import { business } from "@/content/site";
-import { telHref, withBasePath } from "@/lib/utils";
+import { telHref } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
 import { BerryMark } from "./decor";
 import { Reveal } from "./Reveal";
 import { Floating, Parallax, Magnetic, DrawStroke } from "./motion";
+
+// Ragged "torn paper" edge used to mask the polaroid inset.
+const TORN_MASK =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 250' preserveAspectRatio='none'><path fill='white' d='M0,12 L14,4 L28,13 L42,3 L56,12 L70,4 L84,13 L98,3 L112,12 L126,4 L140,13 L154,3 L168,12 L182,4 L200,10 L200,240 L186,246 L172,237 L158,247 L144,237 L130,246 L116,237 L102,247 L88,237 L74,246 L60,237 L46,247 L32,237 L18,246 L0,240 Z'/></svg>",
+  );
+const tornStyle: React.CSSProperties = {
+  WebkitMaskImage: `url("${TORN_MASK}")`,
+  maskImage: `url("${TORN_MASK}")`,
+  WebkitMaskSize: "100% 100%",
+  maskSize: "100% 100%",
+  WebkitMaskRepeat: "no-repeat",
+  maskRepeat: "no-repeat",
+};
 
 export function Hero() {
   return (
@@ -96,16 +110,21 @@ export function Hero() {
                   className="mask-arch aspect-[4/5] w-full shadow-lift"
                 />
 
-                {/* Logo stamp overlay (gentle float) */}
-                <div className="absolute -bottom-7 -left-5 h-28 w-28 [animation:float-soft_5s_ease-in-out_infinite] sm:h-32 sm:w-32 lg:-left-9 lg:h-36 lg:w-36">
-                  <span className="flex h-full w-full items-center justify-center rounded-full border-4 border-cream bg-white p-3 shadow-lift">
-                    <Image
-                      src={withBasePath("/images/logo-transparent.svg")}
-                      alt="Lindas & Elinas Bageri och Konditori logotyp"
-                      width={144}
-                      height={144}
-                      className="h-full w-full rounded-full object-contain"
-                    />
+                {/* Torn-paper polaroid inset with a handwritten sticker */}
+                <div className="absolute -bottom-10 -left-3 z-10 w-40 -rotate-6 [animation:float-soft_5.5s_ease-in-out_infinite] sm:w-48 lg:-left-8 lg:w-56">
+                  <div style={{ filter: "drop-shadow(0 18px 28px rgba(29,26,24,0.3))" }}>
+                    <div className="bg-white p-2 pb-3" style={tornStyle}>
+                      <BakeryImage
+                        src="/images/pastries.svg"
+                        alt="Nygräddade bakverk från Lindas & Elinas."
+                        sizes="240px"
+                        placeholderLabel="Nybakat"
+                        className="aspect-[5/4] w-full"
+                      />
+                    </div>
+                  </div>
+                  <span className="font-hand absolute -right-2 -top-5 rotate-6 text-3xl font-bold text-[color:var(--color-berry)] sm:text-4xl">
+                    Nybakat!
                   </span>
                 </div>
 

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Manrope } from "next/font/google";
+import { Cormorant_Garamond, Manrope, Caveat } from "next/font/google";
 import "./globals.css";
 
 import { SiteHeader } from "@/components/SiteHeader";
@@ -23,6 +23,14 @@ const manrope = Manrope({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-manrope",
+  display: "swap",
+});
+
+// Handwritten accent font (used sparingly for stickers/captions).
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  variable: "--font-hand",
   display: "swap",
 });
 
@@ -71,7 +79,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="sv" className={`${cormorant.variable} ${manrope.variable}`}>
+    <html
+      lang="sv"
+      className={`${cormorant.variable} ${manrope.variable} ${caveat.variable}`}
+    >
       <body
         className="paper-grain"
         style={{
