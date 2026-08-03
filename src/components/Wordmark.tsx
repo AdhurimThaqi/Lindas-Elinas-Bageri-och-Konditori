@@ -34,7 +34,7 @@ export function Wordmark({
       aria-label="Lindas & Elinas Bageri och Konditori — till startsidan"
     >
       <span
-        className="inline-flex shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-105"
+        className="inline-flex shrink-0 items-center justify-center"
         style={{ width: markSize, height: markSize }}
       >
         {logoOk ? (
