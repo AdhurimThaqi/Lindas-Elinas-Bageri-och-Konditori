@@ -5,7 +5,7 @@ import { telHref } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
 import { Reveal } from "./Reveal";
-import { Magnetic } from "./motion";
+import { Magnetic, DrawStroke } from "./motion";
 
 // Ragged "torn paper" edge used to mask the polaroid inset.
 const TORN_MASK =
@@ -35,9 +35,18 @@ export function Hero() {
               </p>
             </Reveal>
             <Reveal delay={0.06} variant="blur">
-              <h1 className="mt-2 text-[2.9rem] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-[4.5rem]">
+              <h1 className="mt-2 pb-3 text-[2.9rem] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-[4.5rem]">
                 Nybakat på riktigt,{" "}
-                <span className="stroke-underline">mitt i Edsberg</span>.
+                <span className="relative inline-block whitespace-nowrap">
+                  mitt i Edsberg.
+                  <DrawStroke
+                    viewBox="0 0 300 20"
+                    d="M4 11 C 70 4, 150 4, 210 9 S 285 15, 296 8"
+                    strokeWidth={5}
+                    delay={0.55}
+                    className="pointer-events-none absolute inset-x-0 -bottom-[0.24em] h-[0.3em] w-full text-[color:var(--color-raspberry)]"
+                  />
+                </span>
               </h1>
             </Reveal>
             <Reveal delay={0.12}>

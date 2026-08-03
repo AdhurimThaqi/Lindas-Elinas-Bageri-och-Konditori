@@ -146,23 +146,6 @@
   }
 
   /* Hand-drawn underline stroke placed under an inline span. */
-  .stroke-underline {
-    position: relative;
-    display: inline-block;
-  }
-  .stroke-underline::after {
-    content: "";
-    position: absolute;
-    left: -2%;
-    right: -2%;
-    bottom: -0.18em;
-    height: 0.42em;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 18' preserveAspectRatio='none'%3E%3Cpath d='M2 12 C 40 4, 80 4, 120 9 S 180 14, 198 6' fill='none' stroke='%23D85A78' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    pointer-events: none;
-  }
-
   /* Handwritten accent font, used sparingly for stickers/captions. */
   .font-hand {
     font-family: var(--font-hand), "Segoe Script", cursive;
