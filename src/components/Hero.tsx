@@ -85,7 +85,7 @@ export function Hero() {
               <div className="absolute -bottom-7 -left-5 h-28 w-28 sm:h-32 sm:w-32 lg:-left-9 lg:h-36 lg:w-36">
                 <span className="flex h-full w-full items-center justify-center rounded-full border-4 border-cream bg-white p-3 shadow-lift">
                   <Image
-                    src={withBasePath("/images/logo.jpg")}
+                    src={withBasePath("/images/logo-transparent.svg")}
                     alt="Lindas & Elinas Bageri och Konditori logotyp"
                     width={144}
                     height={144}

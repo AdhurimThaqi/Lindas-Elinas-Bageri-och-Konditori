@@ -8,6 +8,7 @@ import { MobileActionBar } from "@/components/MobileActionBar";
 import { Analytics } from "@/components/Analytics";
 import { LocalBusinessJsonLd } from "@/components/JsonLd";
 import { getSiteUrl, seo } from "@/content/site";
+import { withBasePath } from "@/lib/utils";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -69,7 +70,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="sv" className={`${cormorant.variable} ${manrope.variable}`}>
-      <body className="paper-grain">
+      <body
+        className="paper-grain"
+        style={{
+          cursor: `url(${withBasePath("/images/cursor.svg")}) 16 16, auto`,
+        }}
+      >
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-cream"

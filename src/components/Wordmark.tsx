@@ -7,11 +7,10 @@ import { cn, withBasePath } from "@/lib/utils";
 import { BerryMark } from "./decor";
 
 /**
- * Brand wordmark: the real logo (public/images/logo.jpg) paired with a
- * typographic lockup for legibility and SEO. The logo is black artwork on a
- * white JPEG background; `mix-blend-multiply` drops that white against the light
- * header/footer so it reads as transparent. If the logo file is missing it
- * falls back to a small berry mark, so the header/footer never break.
+ * Brand wordmark: the real logo paired with a typographic lockup for legibility
+ * and SEO. We use logo-transparent.svg — the logo with its white JPEG background
+ * keyed out to genuine alpha via an SVG colour-matrix filter — so it is fully
+ * transparent on any background. Falls back to a small berry mark if missing.
  */
 export function Wordmark({
   className,
@@ -39,11 +38,11 @@ export function Wordmark({
       >
         {logoOk ? (
           <Image
-            src={withBasePath("/images/logo.jpg")}
+            src={withBasePath("/images/logo-transparent.svg")}
             alt=""
             width={markSize}
             height={markSize}
-            className="h-full w-full object-contain mix-blend-multiply"
+            className="h-full w-full object-contain"
             onError={() => setLogoOk(false)}
             priority
           />

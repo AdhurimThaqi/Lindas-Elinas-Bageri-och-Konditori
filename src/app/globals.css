@@ -77,6 +77,21 @@
     border-radius: 2px;
   }
 
+  /* The body sets a custom logo cursor; keep sensible cursors on interactive
+     elements and text fields so usability isn't affected. */
+  a[href],
+  button,
+  [role="button"],
+  label,
+  summary {
+    cursor: pointer;
+  }
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
