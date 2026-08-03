@@ -28,7 +28,10 @@ export function Preloader() {
 
     if (reduce || seen) {
       // Defer so we don't setState synchronously inside the effect body.
-      const skip = window.setTimeout(() => setPhase("gone"), 0);
+      const skip = window.setTimeout(() => {
+        setPhase("gone");
+        window.dispatchEvent(new Event("preloader:done"));
+      }, 0);
       return () => window.clearTimeout(skip);
     }
 
@@ -65,6 +68,7 @@ export function Preloader() {
           window.sessionStorage.setItem("le-preloaded", "1");
           document.body.style.overflow = "";
           setPhase("gone");
+          window.dispatchEvent(new Event("preloader:done"));
         }
       }}
       role="status"
