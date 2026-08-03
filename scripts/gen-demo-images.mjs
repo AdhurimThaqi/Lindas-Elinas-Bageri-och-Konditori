@@ -59,6 +59,15 @@ const ICONS = {
     <path d="M50 40 q10-4 12-14 q-10 2-12 10 Z M50 40 q-10-4-12-14 q10 2 12 10 Z"/>
     <path d="M50 52 q9-3 11-12 q-9 2-11 9 Z M50 52 q-9-3-11-12 q9 2 11 9 Z"/>
     <path d="M50 64 q9-3 11-12 q-9 2-11 9 Z M50 64 q-9-3-11-12 q9 2 11 9 Z"/>`,
+  // Person holding a cake — used for staff / team photos.
+  baker: `
+    <path d="M36 30 a14 14 0 0 1 28 0"/>
+    <path d="M34 30 h32 v4 a4 4 0 0 1-4 4 H38 a4 4 0 0 1-4-4 z"/>
+    <circle cx="50" cy="46" r="8"/>
+    <path d="M30 66 q0-12 20-12 t20 12"/>
+    <path d="M36 68 h28 v12 a4 4 0 0 1-4 4 H40 a4 4 0 0 1-4-4 z"/>
+    <path d="M36 68 q14-6 28 0"/>
+    <path d="M50 60 v-4"/><circle cx="50" cy="57" r="2"/>`,
 };
 
 function svg({ label, tone, icon, w = 1000, h = 750 }) {
@@ -89,6 +98,9 @@ const main = [
 ];
 
 const gallery = [
+  ["personal-tarta-1.svg", "Vårt team", "raspberry", "baker"],
+  ["personal-tarta-2.svg", "Vårt team", "berry", "baker"],
+  ["personal-tarta-3.svg", "Vårt team", "gold", "baker"],
   ["tarta-1.svg", "Tårtor", "raspberry", "cake"],
   ["tarta-2.svg", "Tårtor", "berry", "cake"],
   ["bakverk-1.svg", "Bakverk", "gold", "pastry"],

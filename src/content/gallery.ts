@@ -13,10 +13,28 @@ export interface GalleryImage {
 
 export const galleryImages: GalleryImage[] = [
   {
+    src: "/images/gallery/personal-tarta-1.svg",
+    alt: "Medarbetare håller upp en nydekorerad festtårta i bageriet.",
+    category: "Vårt team",
+    span: "tall",
+  },
+  {
+    src: "/images/gallery/personal-tarta-2.svg",
+    alt: "Konditor visar stolt upp en gräddtårta med bär.",
+    category: "Vårt team",
+    span: "wide",
+  },
+  {
     src: "/images/gallery/tarta-1.svg",
     alt: "Dekorerad gräddtårta med bär.",
     category: "Tårtor",
-    span: "tall",
+    span: "regular",
+  },
+  {
+    src: "/images/gallery/personal-tarta-3.svg",
+    alt: "Personal med en tårta bakom disken på Edsbergs torg.",
+    category: "Vårt team",
+    span: "regular",
   },
   {
     src: "/images/gallery/bakverk-1.svg",
