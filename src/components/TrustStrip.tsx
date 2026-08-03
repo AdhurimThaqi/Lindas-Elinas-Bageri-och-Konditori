@@ -1,5 +1,4 @@
 import { Croissant, Clock, Cake, Coffee } from "lucide-react";
-import { WheatMark } from "./decor";
 import { Reveal, RevealGroup } from "./Reveal";
 
 const items = [
@@ -12,21 +11,16 @@ const items = [
 export function TrustStrip() {
   return (
     <section
-      className="relative border-y border-line bg-white"
+      className="border-y border-line bg-white"
       aria-label="Det här står vi för"
     >
-      {/* Delicate decoration on the far left */}
-      <WheatMark
-        aria-hidden="true"
-        className="pointer-events-none absolute left-4 top-1/2 hidden h-10 w-10 -translate-y-1/2 text-[color:var(--color-gold)] opacity-40 lg:block"
-      />
       <div className="container-page">
-        <RevealGroup className="grid grid-cols-2 divide-line md:grid-cols-4 md:divide-x">
-          {items.map(({ icon: Icon, line1, line2 }, i) => (
+        <RevealGroup className="grid grid-cols-2 gap-x-6 gap-y-5 py-6 md:grid-cols-4">
+          {items.map(({ icon: Icon, line1, line2 }) => (
             <Reveal
               as="div"
               key={line1}
-              className={cnRow(i)}
+              className="flex items-center gap-3 md:justify-center md:px-4"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[color:var(--color-paper)] text-[color:var(--color-berry)]">
                 <Icon className="h-5 w-5" aria-hidden="true" />
@@ -44,14 +38,4 @@ export function TrustStrip() {
       </div>
     </section>
   );
-}
-
-function cnRow(i: number): string {
-  return [
-    "flex items-center gap-3 py-6 md:justify-center md:px-4",
-    i < 2 ? "border-b border-line md:border-b-0" : "",
-    i % 2 === 0 ? "border-r border-line md:border-r-0" : "",
-  ]
-    .filter(Boolean)
-    .join(" ");
 }

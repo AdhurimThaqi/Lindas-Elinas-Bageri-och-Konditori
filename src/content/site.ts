@@ -174,6 +174,7 @@ export const announcement = {
 export const nav: NavItem[] = [
   { href: "/", label: "Hem" },
   { href: "/sortiment", label: "Sortiment" },
+  { href: "/#galleri", label: "Galleri" },
   { href: "/bestall", label: "Beställ" },
   { href: "/om-oss", label: "Om oss" },
   { href: "/kontakt", label: "Kontakt" },

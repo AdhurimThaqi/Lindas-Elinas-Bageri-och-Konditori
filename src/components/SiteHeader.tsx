@@ -17,9 +17,9 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50">
       <AnnouncementBar />
-      <div className="bg-charcoal text-white">
+      <div className="border-b border-line bg-[color:var(--color-cream)]/90 backdrop-blur">
         <div className="container-page flex h-[60px] items-center justify-between gap-4">
-          <Wordmark light />
+          <Wordmark />
 
           <nav className="hidden items-center gap-7 lg:flex" aria-label="Huvudmeny">
             {nav.map((item) => {
@@ -33,8 +33,8 @@ export function SiteHeader() {
                   href={item.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "relative py-1 text-[0.95rem] font-medium text-white/90 transition-colors hover:text-white",
-                    active && "text-white",
+                    "relative py-1 text-[0.95rem] font-medium text-[color:var(--color-ink-soft)] transition-colors hover:text-charcoal",
+                    active && "text-charcoal",
                   )}
                 >
                   {item.label}
@@ -53,14 +53,14 @@ export function SiteHeader() {
             <a
               href={telHref()}
               aria-label={`Ring ${business.phone.display}`}
-              className="hidden h-10 w-10 items-center justify-center rounded-full text-white/90 ring-1 ring-white/20 transition-colors hover:bg-white/10 lg:inline-flex"
+              className="hidden h-10 w-10 items-center justify-center rounded-full text-charcoal ring-1 ring-[color:var(--color-line)] transition-colors hover:bg-[color:var(--color-paper)] lg:inline-flex"
             >
               <Phone className="h-4.5 w-4.5" aria-hidden="true" />
             </a>
             <button
               type="button"
               onClick={() => setMenuOpen(true)}
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-white ring-1 ring-white/20 transition-colors hover:bg-white/10 lg:hidden"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-charcoal ring-1 ring-[color:var(--color-line)] transition-colors hover:bg-[color:var(--color-paper)] lg:hidden"
               aria-label="Öppna meny"
               aria-expanded={menuOpen}
             >

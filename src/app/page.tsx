@@ -27,7 +27,7 @@ export default function HomePage() {
       <SeasonalFeature />
       <CakeOrderSection />
 
-      <section className="container-page py-20 md:py-28">
+      <section id="galleri" className="container-page scroll-mt-28 py-20 md:py-28">
         <SectionHeading
           eyebrow="Ur våra montrar"
           title="Lite av det vi bakar"
