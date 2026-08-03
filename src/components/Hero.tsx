@@ -22,6 +22,23 @@ const tornStyle: React.CSSProperties = {
   maskRepeat: "no-repeat",
 };
 
+// Ragged vertical "torn paper" edge where the cream copy tears down into
+// the cake image on the right column.
+const TORN_VERTICAL =
+  "data:image/svg+xml," +
+  encodeURIComponent(
+    "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 600' preserveAspectRatio='none'><path fill='white' d='M0,0 L47,0 L33,24 L53,48 L36,72 L50,96 L32,120 L55,144 L38,168 L48,192 L34,216 L54,240 L37,264 L51,288 L33,312 L53,336 L36,360 L50,384 L32,408 L55,432 L38,456 L48,480 L34,504 L54,528 L37,552 L51,576 L44,600 L0,600 Z'/></svg>",
+  );
+const tornVerticalStyle: React.CSSProperties = {
+  WebkitMaskImage: `url("${TORN_VERTICAL}")`,
+  maskImage: `url("${TORN_VERTICAL}")`,
+  WebkitMaskSize: "100% 100%",
+  maskSize: "100% 100%",
+  WebkitMaskRepeat: "no-repeat",
+  maskRepeat: "no-repeat",
+  filter: "drop-shadow(3px 0 7px rgba(29,26,24,0.10))",
+};
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-cream">
@@ -102,6 +119,13 @@ export function Hero() {
             sizes="(min-width: 1024px) 50vw, 100vw"
             placeholderLabel="Festtårta"
             className="absolute inset-0 h-full w-full"
+          />
+
+          {/* Torn-paper edge: the cream side tears down into the image */}
+          <div
+            aria-hidden="true"
+            style={tornVerticalStyle}
+            className="pointer-events-none absolute inset-y-0 left-0 z-[1] hidden w-16 -translate-x-px bg-cream lg:block xl:w-20"
           />
 
           {/* Gold Sedan 2018 seal — upper-left of the cake */}

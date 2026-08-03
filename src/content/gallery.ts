@@ -15,13 +15,13 @@ export const galleryImages: GalleryImage[] = [
   {
     src: "/images/gallery/personal-tarta-1.svg",
     alt: "Medarbetare håller upp en nydekorerad festtårta i bageriet.",
-    category: "Vårt team",
+    category: "Galleri",
     span: "tall",
   },
   {
     src: "/images/gallery/personal-tarta-2.svg",
     alt: "Konditor visar stolt upp en gräddtårta med bär.",
-    category: "Vårt team",
+    category: "Galleri",
     span: "wide",
   },
   {
@@ -33,7 +33,7 @@ export const galleryImages: GalleryImage[] = [
   {
     src: "/images/gallery/personal-tarta-3.svg",
     alt: "Personal med en tårta bakom disken på Edsbergs torg.",
-    category: "Vårt team",
+    category: "Galleri",
     span: "regular",
   },
   {

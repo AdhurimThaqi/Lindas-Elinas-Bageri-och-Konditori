@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Vårt team">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" width="900" height="900" role="img" aria-label="Galleri">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#FBE7EC"/><stop offset="1" stop-color="#EFC3D0"/>
@@ -15,6 +15,6 @@
     <path d="M36 68 q14-6 28 0"/>
     <path d="M50 60 v-4"/><circle cx="50" cy="57" r="2"/>
   </g>
-  <text x="450" y="830" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#1D1A18" fill-opacity="0.7">Vårt team</text>
+  <text x="450" y="830" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="46" fill="#1D1A18" fill-opacity="0.7">Galleri</text>
   <text x="450" y="866" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" letter-spacing="3" fill="#873D56" fill-opacity="0.75">EXEMPELBILD</text>
 </svg>

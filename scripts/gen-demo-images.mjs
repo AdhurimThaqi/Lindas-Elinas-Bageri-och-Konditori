@@ -98,9 +98,9 @@ const main = [
 ];
 
 const gallery = [
-  ["personal-tarta-1.svg", "Vårt team", "raspberry", "baker"],
-  ["personal-tarta-2.svg", "Vårt team", "berry", "baker"],
-  ["personal-tarta-3.svg", "Vårt team", "gold", "baker"],
+  ["personal-tarta-1.svg", "Galleri", "raspberry", "baker"],
+  ["personal-tarta-2.svg", "Galleri", "berry", "baker"],
+  ["personal-tarta-3.svg", "Galleri", "gold", "baker"],
   ["tarta-1.svg", "Tårtor", "raspberry", "cake"],
   ["tarta-2.svg", "Tårtor", "berry", "cake"],
   ["bakverk-1.svg", "Bakverk", "gold", "pastry"],
