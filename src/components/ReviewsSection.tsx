@@ -8,6 +8,7 @@ import {
 import { SectionHeading } from "./SectionHeading";
 import { ReviewCard } from "./ReviewCard";
 import { Reveal, RevealGroup } from "./Reveal";
+import { DecorField } from "./BakeryDecor";
 
 function RatingStat({ rating, meta }: { rating: string; meta: string }) {
   return (
@@ -29,12 +30,19 @@ export function ReviewsSection() {
   const hasReviews = reviews.length > 0;
 
   return (
-    <section className="container-page py-20 md:py-28">
-      <SectionHeading
-        eyebrow="Det säger gästerna"
-        title="Älskat i Edsberg"
-        align="center"
+    <section className="relative overflow-hidden py-20 md:py-28">
+      <DecorField
+        sprites={[
+          { icon: "wheat", className: "left-[4%] top-16 hidden h-16 w-16 md:block", rotate: -10, float: 8 },
+          { icon: "heart", className: "right-[5%] bottom-20 hidden h-14 w-14 md:block", rotate: 12, float: 7, floatDelay: 0.4 },
+        ]}
       />
+      <div className="container-page">
+        <SectionHeading
+          eyebrow="Det säger gästerna"
+          title="Älskat i Edsberg"
+          align="center"
+        />
 
       {/* Rating summary */}
       <Reveal>
@@ -84,6 +92,7 @@ export function ReviewsSection() {
           Läs på Tripadvisor
           <ExternalLink className="h-4 w-4" aria-hidden="true" />
         </a>
+      </div>
       </div>
     </section>
   );

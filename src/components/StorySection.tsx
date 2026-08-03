@@ -3,11 +3,18 @@ import { ArrowRight } from "lucide-react";
 import { BakeryImage } from "./BakeryImage";
 import { Reveal } from "./Reveal";
 import { WheatMark } from "./decor";
+import { DecorField } from "./BakeryDecor";
 
 export function StorySection() {
   return (
-    <section className="bg-cream">
-      <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-14">
+    <section className="relative overflow-hidden bg-cream">
+      <DecorField
+        sprites={[
+          { icon: "heart", className: "right-[6%] top-10 h-14 w-14", rotate: 10, float: 7.5 },
+          { icon: "cupcake", className: "bottom-8 right-[14%] hidden h-16 w-16 lg:block", rotate: -8, float: 8, floatDelay: 0.5 },
+        ]}
+      />
+      <div className="container-page relative grid items-center gap-10 py-12 md:py-16 lg:grid-cols-2 lg:gap-14">
         {/* Image with a black circular badge overlapping its right side */}
         <Reveal y={24} className="order-2 lg:order-1">
           <div className="relative">
