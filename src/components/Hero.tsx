@@ -4,9 +4,8 @@ import { business } from "@/content/site";
 import { telHref } from "@/lib/utils";
 import { BakeryImage } from "./BakeryImage";
 import { OpeningStatus } from "./OpeningStatus";
-import { BerryMark } from "./decor";
 import { Reveal } from "./Reveal";
-import { Floating, Parallax, Magnetic, DrawStroke } from "./motion";
+import { Magnetic } from "./motion";
 
 // Ragged "torn paper" edge used to mask the polaroid inset.
 const TORN_MASK =
@@ -25,121 +24,99 @@ const tornStyle: React.CSSProperties = {
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden">
-      {/* Floating decorative bits */}
-      <Floating className="left-[5%] top-[24%] hidden lg:block" duration={7}>
-        <BerryMark className="h-7 w-7 text-[color:var(--color-raspberry)] opacity-30" />
-      </Floating>
-      <Floating className="bottom-[16%] left-[42%] hidden lg:block" duration={8} delay={0.6}>
-        <BerryMark className="h-5 w-5 text-[color:var(--color-berry)] opacity-30" />
-      </Floating>
+    <section className="relative overflow-hidden bg-cream">
+      <div className="mx-auto grid w-full max-w-[90rem] items-stretch lg:grid-cols-2">
+        {/* LEFT — copy */}
+        <div className="flex flex-col justify-center px-5 py-10 sm:px-8 lg:py-16 lg:pl-8 lg:pr-14 xl:pl-10">
+          <div className="max-w-[520px]">
+            <Reveal variant="blur">
+              <p className="font-hand text-2xl text-[color:var(--color-berry)]">
+                {business.tagline}
+              </p>
+            </Reveal>
+            <Reveal delay={0.06} variant="blur">
+              <h1 className="mt-2 text-[2.9rem] font-medium leading-[0.98] tracking-tight sm:text-6xl lg:text-[4.5rem]">
+                Nybakat på riktigt,{" "}
+                <span className="stroke-underline">mitt i Edsberg</span>.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.12}>
+              <p className="mt-5 max-w-md text-[1.05rem] leading-relaxed text-[color:var(--color-ink-soft)]">
+                Bröd, bakverk, tårtor och lunch – gjort på plats för
+                vardagsfikan, morgonen på språng och livets stora firanden.
+              </p>
+            </Reveal>
 
-      <div className="container-page grid items-center gap-10 py-12 md:py-16 lg:grid-cols-[1.05fr_1fr] lg:gap-14 lg:py-20">
-        {/* Copy */}
-        <div className="relative z-10 max-w-xl">
-          <Reveal variant="blur">
-            <p className="eyebrow">{business.tagline}</p>
-          </Reveal>
-          <Reveal delay={0.06} variant="blur">
-            <h1 className="mt-4 text-[2.6rem] leading-[1.04] sm:text-6xl lg:text-[4.1rem]">
-              Nybakat på riktigt,{" "}
-              <span className="stroke-underline">mitt i Edsberg</span>.
-            </h1>
-          </Reveal>
-          <Reveal delay={0.12}>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-[color:var(--color-ink-soft)]">
-              Bröd, bakverk, tårtor och lunch – gjort på plats för
-              vardagsfikan, morgonen på språng och livets stora firanden.
-            </p>
-          </Reveal>
+            <Reveal delay={0.18}>
+              <div className="mt-7 flex flex-wrap items-center gap-3">
+                <Magnetic strength={0.25}>
+                  <Link href="/bestall" className="btn btn-primary">
+                    Beställ tårta
+                  </Link>
+                </Magnetic>
+                <Magnetic strength={0.25}>
+                  <Link href="/sortiment" className="btn btn-secondary">
+                    Se vårt utbud
+                  </Link>
+                </Magnetic>
+              </div>
+            </Reveal>
 
-          <Reveal delay={0.18}>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
-              <Magnetic strength={0.25}>
-                <Link href="/bestall" className="btn btn-primary">
-                  Beställ tårta
+            <Reveal delay={0.24}>
+              <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3">
+                <OpeningStatus />
+                <Link
+                  href="/kontakt"
+                  className="group inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
+                >
+                  Öppettider &amp; hitta hit
+                  <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                 </Link>
-              </Magnetic>
-              <Magnetic strength={0.25}>
-                <Link href="/sortiment" className="btn btn-secondary">
-                  Se vårt utbud
-                </Link>
-              </Magnetic>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.24}>
-            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <OpeningStatus />
-              <Link
-                href="/kontakt"
-                className="group inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
-              >
-                Öppettider &amp; hitta hit
-                <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-              </Link>
-              <a
-                href={telHref()}
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {business.phone.display}
-              </a>
-            </div>
-          </Reveal>
+                <a
+                  href={telHref()}
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-charcoal link-underline"
+                >
+                  <Phone className="h-4 w-4" aria-hidden="true" />
+                  {business.phone.display}
+                </a>
+              </div>
+            </Reveal>
+          </div>
         </div>
 
-        {/* Layered photo composition */}
-        <div className="relative">
-          {/* Draw-on accent stroke arcing over the top of the image */}
-          <DrawStroke
-            d="M4 46C70 8 150 6 214 30c40 15 78 8 100-20"
-            viewBox="0 0 320 60"
-            strokeWidth={2.4}
-            className="pointer-events-none absolute -top-6 left-6 z-0 hidden h-12 w-[78%] text-[color:var(--color-gold)] opacity-70 lg:block"
+        {/* RIGHT — one dominant cake image, full-bleed */}
+        <div className="relative min-h-[360px] sm:min-h-[460px] lg:min-h-[560px]">
+          <BakeryImage
+            src="/images/hero-cake.svg"
+            alt="Raspberrytårta från Lindas & Elinas."
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+            placeholderLabel="Festtårta"
+            className="absolute inset-0 h-full w-full"
           />
-          <Reveal variant="scale">
-            <Parallax offset={26}>
-              <div className="relative">
+
+          {/* Gold Sedan 2018 seal — upper-left of the cake */}
+          <div className="absolute left-5 top-5 z-10 flex aspect-square w-20 -rotate-6 flex-col items-center justify-center rounded-full bg-[color:var(--color-gold)] text-cream shadow-lift ring-4 ring-cream/70 [animation:float-soft_6s_ease-in-out_infinite] sm:w-24">
+            <span className="font-serif text-base italic leading-none">Sedan</span>
+            <span className="font-serif text-2xl font-semibold leading-none">
+              2018
+            </span>
+          </div>
+
+          {/* Torn-paper polaroid of buns — lower-left edge */}
+          <div className="absolute -left-4 bottom-6 z-10 w-32 -rotate-6 [animation:float-soft_5.5s_ease-in-out_infinite] sm:w-40 lg:w-44">
+            <div style={{ filter: "drop-shadow(0 16px 26px rgba(29,26,24,0.32))" }}>
+              <div className="bg-white p-1.5 pb-2.5" style={tornStyle}>
                 <BakeryImage
-                  src="/images/storefront.jpg"
-                  alt="Lindas & Elinas entré på Edsbergs torg 14 i Sollentuna."
-                  priority
-                  sizes="(min-width: 1024px) 42vw, 90vw"
-                  placeholderLabel="Vår butik på Edsbergs torg 14"
-                  className="mask-arch aspect-[4/5] w-full shadow-lift"
+                  src="/images/pastries.svg"
+                  alt="Nygräddade bullar från Lindas & Elinas."
+                  sizes="200px"
+                  placeholderLabel="Nybakat"
+                  className="aspect-[5/4] w-full"
                 />
-
-                {/* Torn-paper polaroid inset with a handwritten sticker */}
-                <div className="absolute -bottom-10 -left-3 z-10 w-40 -rotate-6 [animation:float-soft_5.5s_ease-in-out_infinite] sm:w-48 lg:-left-8 lg:w-56">
-                  <div style={{ filter: "drop-shadow(0 18px 28px rgba(29,26,24,0.3))" }}>
-                    <div className="bg-white p-2 pb-3" style={tornStyle}>
-                      <BakeryImage
-                        src="/images/pastries.svg"
-                        alt="Nygräddade bakverk från Lindas & Elinas."
-                        sizes="240px"
-                        placeholderLabel="Nybakat"
-                        className="aspect-[5/4] w-full"
-                      />
-                    </div>
-                  </div>
-                  <span className="font-hand absolute -right-2 -top-5 rotate-6 text-3xl font-bold text-[color:var(--color-berry)] sm:text-4xl">
-                    Nybakat!
-                  </span>
-                </div>
-
-                {/* Sedan 2018 gold badge (matches the reference design) */}
-                <div className="absolute -top-5 right-4 z-10 flex aspect-square w-20 -rotate-6 flex-col items-center justify-center rounded-full bg-[color:var(--color-gold)] text-cream shadow-lift ring-4 ring-cream [animation:float-soft_6s_ease-in-out_infinite_0.5s] sm:w-24">
-                  <span className="font-serif text-base italic leading-none">
-                    Sedan
-                  </span>
-                  <span className="font-serif text-2xl font-semibold leading-none">
-                    2018
-                  </span>
-                </div>
               </div>
-            </Parallax>
-          </Reveal>
+            </div>
+          </div>
         </div>
       </div>
     </section>

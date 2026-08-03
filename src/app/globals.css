@@ -112,14 +112,24 @@
 @layer components {
   .container-page {
     width: 100%;
-    max-width: 80rem; /* 1280px */
+    max-width: 90rem; /* 1440px */
     margin-inline: auto;
     padding-inline: 1.25rem;
   }
 
   @media (min-width: 768px) {
     .container-page {
-      padding-inline: 2rem;
+      padding-inline: 2rem; /* ~32px */
+    }
+  }
+
+  /* Compact section rhythm to match the reference proportions. */
+  .section-y {
+    padding-block: 3rem;
+  }
+  @media (min-width: 768px) {
+    .section-y {
+      padding-block: 3.75rem;
     }
   }
 

@@ -43,16 +43,14 @@ export function CategoryCard({
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-5">
-          <h3 className="font-serif text-xl text-charcoal sm:text-2xl">
-            {category.title}
-          </h3>
-          <p className="mt-1.5 text-sm leading-relaxed text-[color:var(--color-ink-soft)]">
+        <div className="flex flex-1 flex-col p-4">
+          <h3 className="font-serif text-lg text-charcoal">{category.title}</h3>
+          <p className="mt-1 text-[0.8rem] leading-snug text-[color:var(--color-ink-soft)]">
             {category.short}
           </p>
-          <span className="mt-4 flex justify-end">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[color:var(--color-raspberry)] text-white shadow-[0_8px_18px_-10px_rgba(216,90,120,0.9)] transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-12">
-              <ArrowUpRight className="h-5 w-5" aria-hidden="true" />
+          <span className="mt-3 flex justify-end">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full border border-[color:var(--color-raspberry)] bg-[color:var(--color-raspberry)] text-white transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-12">
+              <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </span>
         </div>

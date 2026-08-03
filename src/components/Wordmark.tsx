@@ -7,27 +7,29 @@ import { cn, withBasePath } from "@/lib/utils";
 import { BerryMark } from "./decor";
 
 /**
- * Brand wordmark: the real logo paired with a typographic lockup for legibility
- * and SEO. We use logo-transparent.svg — the logo with its white JPEG background
- * keyed out to genuine alpha via an SVG colour-matrix filter — so it is fully
- * transparent on any background. Falls back to a small berry mark if missing.
+ * Brand wordmark: the real logo (transparent) plus a typographic lockup.
+ * `light` uses the white logo + white text for dark backgrounds (the header).
  */
 export function Wordmark({
   className,
   compact = false,
-  markSize = 56,
+  light = false,
+  markSize = 48,
 }: {
   className?: string;
   compact?: boolean;
+  light?: boolean;
   markSize?: number;
 }) {
   const [logoOk, setLogoOk] = useState(true);
+  const logoSrc = light ? "/images/logo-white.svg" : "/images/logo-transparent.svg";
 
   return (
     <Link
       href="/"
       className={cn(
-        "group inline-flex items-center gap-2.5 text-charcoal",
+        "group inline-flex items-center gap-2.5",
+        light ? "text-white" : "text-charcoal",
         className,
       )}
       aria-label="Lindas & Elinas Bageri och Konditori — till startsidan"
@@ -38,7 +40,7 @@ export function Wordmark({
       >
         {logoOk ? (
           <Image
-            src={withBasePath("/images/logo-transparent.svg")}
+            src={withBasePath(logoSrc)}
             alt=""
             width={markSize}
             height={markSize}
@@ -55,7 +57,12 @@ export function Wordmark({
           Lindas &amp; Elinas
         </span>
         {!compact && (
-          <span className="mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-[color:var(--color-ink-muted)]">
+          <span
+            className={cn(
+              "mt-0.5 text-[0.62rem] font-semibold uppercase tracking-[0.22em]",
+              light ? "text-white/70" : "text-[color:var(--color-ink-muted)]",
+            )}
+          >
             Bageri &amp; Konditori
           </span>
         )}

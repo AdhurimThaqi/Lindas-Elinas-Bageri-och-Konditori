@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1400" width="1200" height="1400">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#FBE7EC"/><stop offset="0.55" stop-color="#F3C9D3"/><stop offset="1" stop-color="#D85A78"/>
+  </linearGradient></defs>
+  <rect width="1200" height="1400" fill="url(#g)"/>
+  <g transform="translate(600,700) scale(6)" fill="none" stroke="#FFFFFF" stroke-opacity="0.65" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-28 12 h56 v18 a6 6 0 0 1-6 6 H-22 a6 6 0 0 1-6-6 z"/>
+    <path d="M-22 12 v-12 a6 6 0 0 1 6-6 h32 a6 6 0 0 1 6 6 v12"/>
+    <path d="M-28 21 q7 6 14 0 t14 0 t14 0 t14 0"/>
+    <path d="M0 -6 v-9"/><circle cx="0" cy="-19" r="3.2"/>
+  </g>
+  <text x="600" y="1330" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#FFFFFF" fill-opacity="0.75">Festtårta</text>
+</svg>

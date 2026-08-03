@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { announcement } from "@/content/site";
-import { BerryMark } from "./decor";
 
 /**
  * Thin announcement bar above the navigation. Content and enabled-state come
@@ -12,9 +11,8 @@ export function AnnouncementBar() {
   const hasLink = announcement.link.href && announcement.link.label;
 
   return (
-    <div className="bg-charcoal text-cream">
-      <div className="container-page flex items-center justify-center gap-2.5 py-2 text-center text-[0.8rem] font-medium tracking-wide sm:text-sm">
-        <BerryMark className="hidden h-4 w-4 shrink-0 text-[color:var(--color-raspberry)] sm:block" />
+    <div className="bg-[color:var(--color-raspberry)] text-white">
+      <div className="container-page flex items-center justify-center gap-2.5 py-1 text-center text-[0.78rem] font-medium tracking-wide">
         <p>
           {announcement.message}
           {hasLink ? (
